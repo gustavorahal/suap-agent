@@ -8,6 +8,20 @@ Página de perfil do servidor no SUAP. Exibe dados pessoais, funcionais, bancár
 
 ---
 
+## Permissões Necessárias
+
+**Módulo SUAP:** Gestão de Pessoas :: Gestão de Pessoas
+
+| Grupo | Permite |
+|---|---|
+| Servidor | Consultar os próprios dados (perfil, contracheques, férias, afastamentos) |
+
+> **Nota:** Todo servidor ativo no IFPR possui automaticamente o grupo "Servidor". A consulta de dados de **outros** servidores pode requerer permissões adicionais (ex: gestor de RH).
+>
+> **Como verificar suas permissões:** Acesse `/comum/grupos_usuario/{seu_id}/` e procure pela seção "Gestão de Pessoas".
+
+---
+
 ## Abas
 
 A página do servidor é organizada em 7 abas. Algumas podem ser acessadas diretamente via parâmetro `?tab=` na URL.

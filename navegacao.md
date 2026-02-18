@@ -116,3 +116,49 @@ Sem submenus documentados.
 ### Documentos
 
 Sem submenus documentados.
+
+---
+
+## Permissões e Diagnóstico de Acesso
+
+O SUAP controla o acesso por **Grupos de Usuário**, organizados por módulo. Cada grupo concede permissões específicas dentro do módulo. Sem o grupo adequado, o usuário pode encontrar erros de acesso ou simplesmente não ver determinados menus/botões.
+
+### Como verificar permissões
+
+**URL:** `/comum/grupos_usuario/{id_do_usuario}/`
+
+A página lista todos os grupos atribuídos ao usuário, organizados por módulo. Para encontrar o ID do usuário, acessar o perfil do servidor: o ID aparece na URL da página de grupos.
+
+### Sinais de falta de permissão
+
+| Sintoma | Causa provável |
+|---|---|
+| Página retorna erro 403 (Forbidden) | Usuário não possui o grupo necessário para acessar aquela funcionalidade |
+| Menu ou submenu não aparece no painel lateral | Nenhum grupo do módulo correspondente está atribuído ao usuário |
+| Botão de ação não aparece (ex: "Adicionar projeto") | Grupo atribuído é de nível inferior (ex: Visualizador quando precisa de Coordenador) |
+| Mensagem "Você não tem permissão para realizar esta ação" | Ação requer grupo específico que o usuário não possui |
+| Tabela de listagem aparece vazia mesmo havendo registros | Filtro de campus ou grupo restringe a visibilidade dos registros |
+
+### Diagnóstico passo a passo
+
+Quando uma ação falha por possível falta de permissão:
+
+1. **Verificar os grupos do usuário** — acessar `/comum/grupos_usuario/{id_do_usuario}/` e identificar se o grupo necessário está na lista
+2. **Comparar com a pré-condição do fluxo** — cada fluxo documenta a permissão necessária no campo "**Permissão:**" das pré-condições
+3. **Se o grupo não estiver na lista** — orientar o usuário a solicitar a inclusão no grupo ao administrador do campus, geralmente via Central de Serviços do SUAP ou contato direto com a DIRGE/PROEN
+4. **Se o grupo estiver na lista** — o problema pode ser outro (projeto de outro campus, edital encerrado, situação do projeto incompatível com a ação)
+
+### Módulos e Grupos conhecidos
+
+| Módulo | Grupos |
+|---|---|
+| Administração :: Protocolo | Tramitador de processos |
+| Atividades Estudantis :: Saúde | Psicólogo |
+| Comum :: Central de Serviços | Atendente da Central de Serviços |
+| Documentos e Processos Eletrônicos :: Processos Eletrônicos | Operador de Processo Eletrônico, Tramitador de Processos Eletrônicos |
+| Ensino :: ETEP | Interessado ETEP, etep Administrador, Membro ETEP |
+| Ensino :: Ensino | Pedagogo |
+| Ensino :: Projetos de Ensino | projetos_ensino Administrador, Avaliador de Projetos de Ensino, Monitor de Projetos de Ensino, Visualizador de Projetos de Ensino, Coordenador de Projetos de Ensino, Integrante da Comissão de Acompanhamento |
+| Gestão de Pessoas :: Gestão de Pessoas | Servidor |
+
+> **Nota:** Esta lista reflete os grupos de um usuário específico. Outros módulos e grupos podem existir no SUAP. Atualize esta tabela conforme novos módulos forem documentados.

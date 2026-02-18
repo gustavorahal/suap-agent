@@ -8,6 +8,27 @@ Submissão e gestão de projetos de ensino no SUAP. Programas disponíveis: PBIS
 
 ---
 
+## Permissões Necessárias
+
+**Módulo SUAP:** Ensino :: Projetos de Ensino
+
+O acesso às funcionalidades de Projetos de Ensino depende dos grupos atribuídos ao usuário. Sem o grupo adequado, o SUAP pode exibir erro 403 (acesso negado) ou simplesmente não mostrar o menu/botão correspondente.
+
+| Grupo | Permite |
+|---|---|
+| Visualizador de Projetos de Ensino | Consultar projetos e seus detalhes |
+| Coordenador de Projetos de Ensino | Criar, editar e submeter projetos |
+| Avaliador de Projetos de Ensino | Avaliar projetos submetidos |
+| Monitor de Projetos de Ensino | Acompanhar projetos em execução |
+| projetos_ensino Administrador | Acesso administrativo total ao módulo |
+| Integrante da Comissão de Acompanhamento | Acompanhamento institucional dos projetos |
+
+> **Como verificar suas permissões:** Acesse `/comum/grupos_usuario/{seu_id}/` e procure pela seção "Ensino :: Projetos de Ensino".
+>
+> **Sem acesso?** Solicite a inclusão no grupo necessário ao administrador do campus. Geralmente via Central de Serviços do SUAP ou contato direto com a DIRGE/PROEN.
+
+---
+
 ## Listagem de Projetos
 
 **URL:** `/admin/projetos_ensino/projeto/`
@@ -245,6 +266,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 
 **Pré-condições:**
 - Usuário logado no SUAP
+- **Permissão:** qualquer grupo do módulo Ensino :: Projetos de Ensino (mínimo: Visualizador de Projetos de Ensino)
 
 **Passos:**
 
@@ -262,6 +284,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 **Pré-condições:**
 - Usuário logado no SUAP
 - ID do projeto conhecido
+- **Permissão:** Visualizador de Projetos de Ensino (ou superior)
 
 **Passos:**
 
@@ -279,6 +302,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 **Pré-condições:**
 - Usuário logado no SUAP
 - ID do projeto conhecido
+- **Permissão:** Visualizador de Projetos de Ensino (ou superior)
 
 **Passos:**
 
@@ -297,6 +321,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 - Usuário logado no SUAP
 - ID do projeto conhecido
 - Projeto em situação Conclusão ou Concluído
+- **Permissão:** Visualizador de Projetos de Ensino (ou superior)
 
 **Passos:**
 
@@ -313,6 +338,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 
 **Pré-condições:**
 - Usuário logado no SUAP
+- **Permissão:** Coordenador de Projetos de Ensino (para submeter projetos)
 
 **Passos:**
 
@@ -331,6 +357,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 - Edital aberto para submissão
 - Usuário logado como servidor/docente
 - ID do edital conhecido
+- **Permissão:** Coordenador de Projetos de Ensino
 
 **Passos:**
 
@@ -360,6 +387,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 **Pré-condições:**
 - Edital aberto para submissão
 - Usuário logado como servidor/docente
+- **Permissão:** Coordenador de Projetos de Ensino
 
 **Passos:**
 
@@ -389,6 +417,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 
 **Pré-condições:**
 - Projeto já criado e salvo
+- **Permissão:** Coordenador de Projetos de Ensino (ser coordenador do projeto)
 
 **Passos:**
 
@@ -416,6 +445,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 **Pré-condições:**
 - Todas as abas do projeto preenchidas
 - Equipe, metas, plano de aplicação e desembolso cadastrados
+- **Permissão:** Coordenador de Projetos de Ensino (ser coordenador do projeto)
 
 **Passos:**
 
