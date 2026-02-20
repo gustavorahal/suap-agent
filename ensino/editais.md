@@ -260,7 +260,7 @@ Página de gestão do edital após criação. Exibe dados resumidos no cabeçalh
 - **Forma de Seleção "Geral"** simplifica a gestão (sem ofertas por campus), mas centraliza toda a seleção.
 - **"Edital de Campus" (checkbox)** é diferente de "Forma de Seleção: Campus". O checkbox controla se avaliadores do mesmo campus podem avaliar projetos daquele campus.
 - **Participação de Aluno e Servidor Obrigatória** vêm marcados por padrão — desmarcar se o edital permitir projetos sem aluno ou sem servidor.
-- Os **Termos de Compromisso** são exibidos aos coordenadores/participantes durante a submissão do projeto. Devem refletir as regras do edital.
+- Os **Termos de Compromisso** são exibidos aos coordenadores/participantes durante a submissão do projeto. Devem refletir as regras do edital. Se nenhum termo for preenchido no edital, a seção de aceite **não aparece** no formulário de submissão de projeto.
 
 ### Erros comuns e validações
 

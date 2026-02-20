@@ -193,7 +193,7 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 |---|---|---|---|---|---|
 | edital | Edital | *(somente leitura)* | somente_leitura | — | Nome do edital (preenchido automaticamente) |
 | campus | Campus | `#id_campus` | seleção | sim | Campus onde o projeto será executado. Exibe apenas campi com oferta no edital |
-| setor | Setor | `#id_setor` | seleção | sim* | Setor do campus. *Pode não aparecer dependendo do edital |
+| setor | Setor | `#id_setor` | seleção | sim* | Setor do campus. Auto-preenche ao selecionar Campus. *Pode não aparecer dependendo do edital |
 | titulo | Título do projeto | `#id_titulo` | texto | sim | Título completo do projeto de ensino |
 | acao | Ação | `#id_acao` | texto | sim* | Ação administrativa vinculada ao projeto. *Pode não aparecer dependendo do edital |
 | carga_horaria_coordenador | Carga Horária Semanal do Coordenador | `#id_carga_horaria` | numero | sim | Horas semanais dedicadas pelo coordenador |
@@ -204,17 +204,18 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 |---|---|---|---|---|---|
 | inicio_execucao | Início da Execução | `#id_inicio_execucao` | data (dd/mm/aaaa) | sim | Data de início da execução do projeto |
 | termino_execucao | Término da Execução | `#id_fim_execucao` | data (dd/mm/aaaa) | sim | Data de término da execução |
-| carga_horaria_total | Carga horária total para desenvolvimento do projeto | `#id_carga_horaria_total` | numero | sim | Total de horas para desenvolvimento do projeto |
+| carga_horaria_total | Carga horária total para desenvolvimento do projeto | `#id_carga_horaria_total` | numero | sim | Cálculo: Carga Horária Semanal do Coordenador × número de semanas entre Início e Término da Execução |
 | eixo_tematico | Eixo Temático | `#id_eixo` | multiseleção | sim | Eixos temáticos do projeto (múltipla escolha) |
 | projeto_interdisciplinar | Projeto Interdisciplinar? | `#id_interdisciplinar` | checkbox | não | Indica se o projeto envolve mais de uma disciplina |
 | disciplina | Disciplina | `#id_disciplina` | multiseleção | não | Disciplinas envolvidas no projeto |
 | curso | Curso | `#id_curso` | multiseleção | não | Cursos associados ao projeto |
-| relacao_pos_graduacao | Possui relação institucional com Pós-graduação? | `#id_pos_graduacao` | checkbox | não | Indica vínculo com programa de pós-graduação |
+| relacao_institucional | Possui relação institucional com Pós-graduação / Pesquisa/Extensão? | `#id_pos_graduacao` | checkbox | não | Label varia conforme edital: "Pós-graduação" ou "Pesquisa/Extensão" |
 | parceiro_externo | Há parceiro externo? | `#id_parceiro_externo` | checkbox | não | Indica se há parceiros externos envolvidos |
 
 ### Seção 3: Descrição do Projeto
 
 > Todos os campos usam editor rich text (CKEditor).
+> Para preencher via automação: `CKEDITOR.instances['id_campo'].setData('<p>texto</p>')`
 
 | Campo | Label | Seletor | Tipo | Obrigatório | Descrição |
 |---|---|---|---|---|---|
@@ -223,11 +224,13 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 | justificativa | Justificativa e Relevância | `#id_justificativa` | rich_text | sim | — |
 | objetivo_geral | Objetivo Geral | `#id_objetivo_geral` | rich_text | sim | — |
 | metodologia | Metodologia da execução do projeto | `#id_metodologia` | rich_text | sim | — |
-| acompanhamento | Acompanhamento e avaliação das atividades durante a execução | `#id_acompanhamento_avaliacao` | rich_text | sim | — |
+| acompanhamento | Acompanhamento e avaliação das atividades durante a execução | `#id_acompanhamento_e_avaliacao` | rich_text | sim | — |
 | resultados_esperados | Resultados Esperados e Disseminação dos Resultados | `#id_resultados_esperados` | rich_text | sim | — |
 | referencias | Referências | `#id_referencias` | rich_text | sim | — |
 
 ### Seção 4: Termo de Compromisso
+
+> **Nota:** Esta seção só aparece se o edital tiver Termos de Compromisso configurados. Caso contrário, o formulário vai direto do campo Referências ao botão Salvar.
 
 | Campo | Label | Seletor | Tipo | Obrigatório | Descrição |
 |---|---|---|---|---|---|
