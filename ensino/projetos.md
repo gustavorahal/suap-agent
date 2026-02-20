@@ -129,8 +129,8 @@ As abas visíveis dependem da configuração do edital e da situação do projet
 
 | Nome | Parâmetro `?tab=` | Condição |
 |---|---|---|
-| Plano de Aplicação | `plano_de_aplicacao` | Edital com valor financiado > 0 |
-| Plano de Desembolso | `plano_de_desembolso` | Edital com valor financiado > 0 |
+| Plano de Aplicação | `plano_de_aplicacao` | Edital com Fonte de Recursos cadastrada (aba "Fonte de Recursos" do edital) |
+| Plano de Desembolso | `plano_de_desembolso` | Edital com Fonte de Recursos cadastrada (aba "Fonte de Recursos" do edital) |
 | Fotos | `fotos` | Projeto em execução ou concluído |
 | Registros de Frequência/Atividade Diária | `registros_de_frequencia_atividade_diaria` | Projeto em execução |
 | Pendências | `pendencias` | Projeto com pendências |

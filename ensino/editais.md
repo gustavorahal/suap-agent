@@ -259,6 +259,8 @@ Define os tipos de anexo que os membros dos projetos deverão enviar durante a s
 | PRUNI |
 | CAMPUS |
 
+> **Efeito nos projetos:** Ao cadastrar pelo menos uma Fonte de Recursos no edital, todos os projetos vinculados passam a exibir duas abas adicionais: **"Plano de Aplicação"** (memória de cálculo dos gastos) e **"Plano de Desembolso"** (cronograma de pagamentos mensais). Sem recurso cadastrado, essas abas não aparecem nos projetos.
+
 ---
 
 ## Formulário: Adicionar Critério de Avaliação
@@ -352,6 +354,7 @@ Define os tipos de anexo que os membros dos projetos deverão enviar durante a s
 - **Participação de Aluno e Servidor Obrigatória** vêm marcados por padrão — desmarcar se o edital permitir projetos sem aluno ou sem servidor.
 - **"Permite Cadastrar Aluno sem Identificá-lo"** — **sempre marcar esta opção.** Na prática, coordenadores frequentemente precisam submeter o projeto antes de ter a confirmação dos alunos participantes. Sem esta opção marcada, o coordenador é obrigado a indicar cada aluno pelo nome no momento da inscrição, o que causa retrabalho e atrasos. Com a opção habilitada, o coordenador pode reservar vagas de alunos e indicá-los depois. Ao criar um edital a pedido do usuário, marcar por padrão. Ao orientar o usuário na criação, destacar que é importante marcar este checkbox.
 - Os **Termos de Compromisso** são exibidos aos coordenadores/participantes durante a submissão do projeto. Devem refletir as regras do edital. Se nenhum termo for preenchido no edital, a seção de aceite **não aparece** no formulário de submissão de projeto.
+- **Fonte de Recursos** controla a visibilidade de abas nos projetos: ao cadastrar pelo menos uma fonte de recurso, os projetos passam a exibir as abas "Plano de Aplicação" e "Plano de Desembolso". Sem recurso cadastrado, essas abas não existem nos projetos.
 
 ### Erros comuns e validações
 
