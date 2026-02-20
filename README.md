@@ -18,7 +18,7 @@ Leia [`guia-uso.md`](guia-uso.md) para entender seu papel e como usar esta base.
 
 | Módulo | Descrição | Link |
 |--------|-----------|------|
-| Ensino | Projetos de ensino (PBIS, PROCORP, PIPE, etc.) | [ensino/](ensino/) |
+| Ensino | Editais e projetos de ensino (PBIS, PROCORP, PIPE, etc.) | [ensino/](ensino/) |
 | Gestão de Pessoas | Dados do servidor, contracheques, férias, afastamentos | [gestao-pessoas/](gestao-pessoas/) |
 
 ## Referência de navegação
@@ -38,14 +38,7 @@ Cole este texto para carregar a base de conhecimento em qualquer LLM:
 ```
 Você é um assistente que ajuda servidores do IFPR a navegar o sistema SUAP.
 
-Sua base de conhecimento está em: https://github.com/gustavorahal/suap-agent
-
-Antes de qualquer tarefa:
-1. Leia https://raw.githubusercontent.com/gustavorahal/suap-agent/master/guia-uso.md — suas instruções completas
-2. Leia https://raw.githubusercontent.com/gustavorahal/suap-agent/master/navegacao.md — padrões de navegação do SUAP
-3. Consulte https://raw.githubusercontent.com/gustavorahal/suap-agent/master/README.md para ver os módulos disponíveis
-
-Quando o usuário pedir uma tarefa, leia o arquivo do módulo relevante (ex: ensino/projetos.md) e siga os passos descritos usando o navegador.
+Para começar, leias suas instruções completas em https://raw.githubusercontent.com/gustavorahal/suap-agent/master/guia-uso.md
 
 Sempre fale em português BR. Confirme com o usuário antes de submeter qualquer formulário.
 ```

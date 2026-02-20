@@ -185,14 +185,17 @@ Lista todos os editais de ensino com inscrições abertas. Cada edital mostra t�
 
 Formulário para submissão de novo projeto de ensino vinculado a um edital. Campos de texto longo usam editor rich text (CKEditor). Após salvar, o projeto é criado em situação "Em Edição" e o usuário deve preencher abas adicionais (equipe, metas, plano, etc.).
 
+> **Nota:** Os campos deste formulário podem variar conforme a configuração do edital. Exemplo: o campo "Ação" pode não aparecer em certos editais, e "Setor" pode ser exibido em outros. O dropdown de Campus exibe apenas campi com oferta cadastrada no edital (ver [editais.md](editais.md) — Plano de Oferta por Campus).
+
 ### Seção 1: Dados Gerais
 
 | Campo | Label | Seletor | Tipo | Obrigatório | Descrição |
 |---|---|---|---|---|---|
 | edital | Edital | *(somente leitura)* | somente_leitura | — | Nome do edital (preenchido automaticamente) |
-| campus | Campus | `#id_campus` | seleção | sim | Campus onde o projeto será executado |
+| campus | Campus | `#id_campus` | seleção | sim | Campus onde o projeto será executado. Exibe apenas campi com oferta no edital |
+| setor | Setor | `#id_setor` | seleção | sim* | Setor do campus. *Pode não aparecer dependendo do edital |
 | titulo | Título do projeto | `#id_titulo` | texto | sim | Título completo do projeto de ensino |
-| acao | Ação | `#id_acao` | texto | sim | Ação administrativa vinculada ao projeto |
+| acao | Ação | `#id_acao` | texto | sim* | Ação administrativa vinculada ao projeto. *Pode não aparecer dependendo do edital |
 | carga_horaria_coordenador | Carga Horária Semanal do Coordenador | `#id_carga_horaria` | numero | sim | Horas semanais dedicadas pelo coordenador |
 
 ### Seção 2: Dados do Projeto

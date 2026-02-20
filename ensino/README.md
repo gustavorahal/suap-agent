@@ -9,4 +9,5 @@ Módulo de ensino do SUAP. Inclui gestão de projetos de ensino, diários de cla
 
 | Funcionalidade | Descrição | Documentação |
 |---|---|---|
+| Editais | Criação e gestão de editais de projetos de ensino | [editais.md](editais.md) |
 | Projetos | Submissão e gestão de projetos de ensino | [projetos.md](projetos.md) |
