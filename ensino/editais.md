@@ -90,12 +90,14 @@ Após salvar, o sistema redireciona para a listagem. Para acessar as abas de ges
 |---|---|---|---|---|
 | inicio_inscricoes | Início das Inscrições | datetime | sim | Quando abre o período de submissão de projetos |
 | fim_inscricoes | Fim das Inscrições | datetime | sim | Quando fecha o período de submissão |
-| inicio_pre_selecao | Início da Pré-Seleção | datetime | não | Início da fase de pré-seleção |
-| inicio_selecao | Início da Seleção | datetime | não | Início da fase de seleção |
-| fim_selecao | Fim da Seleção | datetime | não | Fim da fase de seleção |
+| inicio_pre_selecao | Início da Pré-Seleção | datetime | condicional | Início da fase de pré-seleção |
+| inicio_selecao | Início da Seleção | datetime | condicional | Início da fase de seleção |
+| fim_selecao | Fim da Seleção | datetime | condicional | Fim da fase de seleção |
 | inicio_interposicao_recursos | Início da Interposição de Recursos | datetime | não | Abertura do período de recursos |
 | fim_interposicao_recursos | Fim da Interposição de Recursos | datetime | não | Encerramento do período de recursos |
-| divulgacao_selecao | Divulgação da Seleção | datetime | não | Data de publicação do resultado |
+| divulgacao_selecao | Divulgação da Seleção | datetime | condicional | Data de publicação do resultado |
+
+> **Campos condicionalmente obrigatórios:** Quando Tipo do Edital = "Ensino", os campos Início da Pré-Seleção, Início da Seleção, Fim da Seleção e Divulgação da Seleção tornam-se **obrigatórios**. Para Tipo "Ensino Contínuo", estes campos são opcionais.
 
 ### Seção 3: Configurações do Edital
 
@@ -165,6 +167,7 @@ Página de gestão do edital após criação. Exibe dados resumidos no cabeçalh
 | 1 | Anexos dos Projetos | `tab1` | Tipos de anexo que projetos devem enviar | Adicionar Anexo |
 | 2 | Fonte de Recursos | `tab2` | Fontes de financiamento do edital | Adicionar Recurso |
 | 3 | Plano de Oferta por Campus | `tab3` | Vagas por campus (pré-seleção e seleção) | Adicionar Oferta |
+| 4 | Critérios de Avaliação da Qualificação do Projeto | `tab4` | Critérios usados na avaliação dos projetos | Adicionar Critério de Avaliação |
 
 > **Aba "Plano de Oferta por Campus" só é relevante quando Forma de Seleção = "Campus".**
 > Sem ofertas cadastradas, nenhum campus terá vagas para projetos.
@@ -183,6 +186,93 @@ Página de gestão do edital após criação. Exibe dados resumidos no cabeçalh
 | selecionados | Selecionados | número | sim | Quantos projetos serão selecionados para execução |
 
 > **Dica:** Cadastre uma oferta para cada campus participante. Se um campus não tiver oferta cadastrada, servidores daquele campus não terão vagas disponíveis.
+
+---
+
+## Formulário: Adicionar Anexo do Edital
+
+**Acesso:** Aba "Anexos do Edital" → botão "Adicionar Anexo"
+**Exibição:** modal sobreposto à página
+
+| Campo | Label | Tipo | Obrigatório | Descrição |
+|---|---|---|---|---|
+| nome | Nome | texto | sim | Nome do anexo |
+| descricao | Descrição | textarea | não | Descrição do anexo. Contador de caracteres visível |
+| arquivo | Arquivo | arquivo | não | Arquivo do anexo. Máximo 10 MB |
+| ordem | Ordem | número | sim | Número inteiro ≥ 1. Define a ordem de exibição |
+
+---
+
+## Formulário: Adicionar Anexo dos Projetos
+
+**Acesso:** Aba "Anexos dos Projetos" → botão "Adicionar Anexo"
+**URL:** `/projetos_ensino/adicionar_anexo/{edital_id}/`
+**Exibição:** página separada (não modal)
+
+Define os tipos de anexo que os membros dos projetos deverão enviar durante a submissão.
+
+| Campo | Label | Tipo | Obrigatório | Descrição |
+|---|---|---|---|---|
+| anexo_edital | Anexo do Edital | autocomplete | não | Vincula a um anexo já cadastrado na aba "Anexos do Edital" |
+| nome | Nome | texto | sim | Nome do tipo de anexo exigido |
+| descricao | Descrição | textarea | não | Descrição do anexo esperado. Contador de caracteres visível |
+| tipo_membro | Tipo de Membro | seleção | sim | Ver opções abaixo |
+| vinculo | Tipo de Vínculo | seleção | sim | Ver opções abaixo |
+| ordem | Ordem | número | sim | Número inteiro ≥ 1 |
+
+**Tipo de Membro — opções:**
+
+| Valor |
+|---|
+| Docente |
+| Técnico Administrativo |
+| Aluno |
+| Coordenador Docente |
+
+**Tipo de Vínculo — opções:**
+
+| Valor |
+|---|
+| Bolsista |
+| Voluntário |
+
+> **Uso prático:** Configure aqui quais documentos cada tipo de participante deve anexar ao projeto. Exemplo: "Plano de trabalho" para Aluno Bolsista, "Declaração de carga horária" para Docente.
+
+---
+
+## Formulário: Adicionar Recurso
+
+**Acesso:** Aba "Fonte de Recursos" → botão "Adicionar Recurso"
+**Exibição:** modal sobreposto à página
+
+| Campo | Label | Tipo | Obrigatório | Descrição |
+|---|---|---|---|---|
+| origem_recurso | Origem | seleção | sim | Ver opções abaixo |
+| valor_disponivel | Valor disponível por projeto (R$) | número | sim | Valor em reais disponível por projeto para essa fonte |
+| despesa | Despesa | autocomplete | sim | Natureza da despesa (busca por código ou descrição) |
+
+**Origem — opções:**
+
+| Valor |
+|---|
+| Projetos de ensino |
+| PRUNI |
+| CAMPUS |
+
+---
+
+## Formulário: Adicionar Critério de Avaliação
+
+**Acesso:** Aba "Critérios de Avaliação da Qualificação do Projeto" → botão "Adicionar Critério de Avaliação"
+**Exibição:** modal sobreposto à página
+
+| Campo | Label | Tipo | Obrigatório | Descrição |
+|---|---|---|---|---|
+| descricao | Descrição | textarea | sim | Texto descritivo do critério de avaliação. Contador de caracteres visível |
+| pontuacao_maxima | Pontuação Máxima | número | sim | Nota máxima que o avaliador pode atribuir neste critério |
+| ordem_desempate | Ordem para Desempate | número | sim | Ordem 1 indica que o critério será o primeiro a ser considerado para desempate |
+
+> **Uso prático:** Defina os critérios que os avaliadores usarão para pontuar os projetos submetidos. A pontuação total do projeto será a soma das notas em cada critério. A ordem de desempate é usada quando dois projetos empatam na pontuação total.
 
 ---
 
