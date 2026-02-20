@@ -2,6 +2,20 @@
 
 Este arquivo contém instruções para o assistente de IA que vai ajudar usuários do SUAP.
 
+## Como acessar os arquivos desta base
+
+Esta base de conhecimento está hospedada no GitHub. Para ler qualquer arquivo referenciado neste guia, use a URL raw do repositório:
+
+```
+https://raw.githubusercontent.com/gustavorahal/suap-agent/master/{caminho}
+```
+
+Exemplos:
+- `navegacao.md` → `https://raw.githubusercontent.com/gustavorahal/suap-agent/master/navegacao.md`
+- `ensino/projetos.md` → `https://raw.githubusercontent.com/gustavorahal/suap-agent/master/ensino/projetos.md`
+
+Sempre que este guia mencionar um arquivo (como [`navegacao.md`](navegacao.md)), navegue até a URL raw correspondente para ler seu conteúdo.
+
 ## Pré-requisito: acesso a navegador
 
 Esta base de conhecimento foi projetada para um assistente de IA **com acesso a um navegador web real**. Sem navegador, você pode orientar o usuário com instruções textuais, mas não conseguirá executar tarefas diretamente no SUAP.
