@@ -106,7 +106,7 @@ Após salvar, o sistema redireciona para a listagem. Para acessar as abas de ges
 | valor_financiado | Valor Financiado por Projeto | número | 0,0 | Valor em reais disponível por projeto |
 | exige_licoes_aprendidas | Exige Lições Aprendidas | checkbox | desmarcado | Coordenadores devem cadastrar lições aprendidas |
 | exige_avaliacao_alunos | Exige Avaliação dos Alunos | checkbox | desmarcado | Coordenadores devem avaliar os alunos |
-| permite_aluno_sem_identificar | Permite Cadastrar Aluno sem Identificá-lo | checkbox | desmarcado | Permite registrar participação de alunos sem indicar quais especificamente |
+| permite_aluno_sem_identificar | Permite Cadastrar Aluno sem Identificá-lo | checkbox | desmarcado | **Recomendado marcar.** Permite registrar participação de alunos sem indicar quais especificamente. **Efeito:** no projeto, o modal "Adicionar Aluno" exibe checkbox "Indicar o Aluno Posteriormente" — ao marcar, oculta os campos Participante e Data de Entrada (ver [projetos.md](projetos.md) — Aba: Equipe) |
 | aluno_graduacao_submete | Aluno de graduação pode submeter | checkbox | desmarcado | Alunos de graduação podem submeter projetos |
 | pode_escolher_campus | Pode escolher campus de submissão | checkbox | desmarcado | Coordenador pode vincular projeto a qualquer campus |
 
@@ -260,6 +260,7 @@ Página de gestão do edital após criação. Exibe dados resumidos no cabeçalh
 - **Forma de Seleção "Geral"** simplifica a gestão (sem ofertas por campus), mas centraliza toda a seleção.
 - **"Edital de Campus" (checkbox)** é diferente de "Forma de Seleção: Campus". O checkbox controla se avaliadores do mesmo campus podem avaliar projetos daquele campus.
 - **Participação de Aluno e Servidor Obrigatória** vêm marcados por padrão — desmarcar se o edital permitir projetos sem aluno ou sem servidor.
+- **"Permite Cadastrar Aluno sem Identificá-lo"** — **sempre marcar esta opção.** Na prática, coordenadores frequentemente precisam submeter o projeto antes de ter a confirmação dos alunos participantes. Sem esta opção marcada, o coordenador é obrigado a indicar cada aluno pelo nome no momento da inscrição, o que causa retrabalho e atrasos. Com a opção habilitada, o coordenador pode reservar vagas de alunos e indicá-los depois. Ao criar um edital a pedido do usuário, marcar por padrão. Ao orientar o usuário na criação, destacar que é importante marcar este checkbox.
 - Os **Termos de Compromisso** são exibidos aos coordenadores/participantes durante a submissão do projeto. Devem refletir as regras do edital. Se nenhum termo for preenchido no edital, a seção de aceite **não aparece** no formulário de submissão de projeto.
 
 ### Erros comuns e validações

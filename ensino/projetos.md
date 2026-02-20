@@ -80,67 +80,197 @@ O acesso às funcionalidades de Projetos de Ensino depende dos grupos atribuído
 
 ---
 
-## Detalhe do Projeto
+## Detalhe do Projeto (Visualização / Edição)
 
 **URL:** `/projetos_ensino/projeto/{id}/`
-**Título da página:** "Projeto de Ensino: {titulo}"
+**Título da página:** "Projeto de Ensino Contínuo: {titulo}" ou "Projeto de Ensino: {titulo}" (conforme tipo do edital)
+
+### Alerta de Modo de Edição
+
+Quando o projeto está "Em edição", exibe banner amarelo:
+> "Este projeto está em modo de edição. Quando o preenchimento for concluído, clique no botão 'Enviar Projeto'. Lembre-se de que o prazo final para submissão (envio) é {data_fim_inscricoes}."
 
 ### Cabeçalho
 
-Campos exibidos no cabeçalho:
+| Campo | Descrição |
+|---|---|
+| Título do Projeto | Nome completo do projeto |
+| Período do Edital | Fase atual (ex: "Inscrição") |
+| Campus do Projeto | Campus vinculado |
+| Setor | Setor do campus |
+| Carga Horária do Projeto | Total em horas |
+| Monitor do Projeto | Servidor monitor (se atribuído) |
+| Badge de situação | "Em edição", "Enviado", "Em Execução", etc. |
 
-- Título do Projeto
-- Período do Edital
-- Campus do Projeto
-- Setor
-- Carga Horária do Projeto
-- Monitor do Projeto
-- Badge de situação (exibido)
+### Botões de Ação
+
+| Botão | Cor | Descrição |
+|---|---|---|
+| Enviar Projeto | verde | Submete o projeto para pré-avaliação. Só aparece quando projeto está "Em edição" |
+| Remover Projeto | vermelho | Remove o projeto permanentemente |
+| Inativar Projeto | vermelho | Inativa o projeto |
+| Editar Projeto | verde (dentro da aba Dados do Projeto) | Redireciona para formulário de edição |
+| Visualizar | dropdown cinza | Opções de visualização |
 
 ### Abas
 
-> **Via URL:** abas marcadas com `via_url: true` podem ser acessadas diretamente via parâmetro `?tab=`. Abas com `via_url: false` requerem clique via JavaScript na página.
+As abas visíveis dependem da configuração do edital e da situação do projeto. As 6 abas abaixo aparecem sempre. Abas adicionais (Plano de Aplicação, Plano de Desembolso, Fotos, Registros de Frequência, Pendências, Conclusão) podem aparecer em projetos com financiamento ou em estágio avançado do ciclo de vida.
 
-| # | Nome | Parâmetro `?tab=` | Via URL | Descrição |
-|---|---|---|---|---|
-| 1 | Dados do Projeto | *(aba padrão)* | sim | Início/Término da Execução, Área Temática, Interdisciplinar, Parceiros externos, status Pré-seleção/Seleção, Pontuação, Data de Divulgação |
-| 2 | Dados do Edital | `dados_do_edital` | não | Informações do edital vinculado ao projeto |
-| 3 | Caracterização dos Beneficiários | `caracterizacao_dos_beneficiarios` | não | Público-alvo e quantidade de beneficiários |
-| 4 | Equipe | `equipe` | sim | Membros do projeto (docentes e discentes) |
-| 5 | Metas/Atividades | `metas_atividades` | não | Metas e atividades do projeto com cronograma |
-| 6 | Plano de Aplicação | `plano_de_aplicacao` | não | Memória de cálculo (valor bolsa x quantidade) |
-| 7 | Plano de Desembolso | `plano_de_desembolso` | não | Pagamentos mensais programados |
-| 8 | Anexos | `anexos` | não | Arquivos anexados ao projeto |
-| 9 | Fotos | `fotos` | não | Fotos relacionadas ao projeto |
-| 10 | Registros de Frequência/Atividade Diária | `registros_de_frequencia_atividade_diaria` | não | Registros de presença e atividades |
-| 11 | Pendências | `pendencias` | não | Pendências a resolver antes do envio/conclusão |
-| 12 | Conclusão | `conclusao` | sim | Relatório final do projeto |
+| # | Nome | Parâmetro `?tab=` | Descrição |
+|---|---|---|---|
+| 1 | Dados do Projeto | *(padrão)* | Dados do projeto, datas, status de seleção e textos descritivos. Badge ✓ quando completo |
+| 2 | Dados do Edital | `dados_edital` | Informações somente leitura do edital vinculado (datas, anexos) |
+| 3 | Caracterização dos Beneficiários | `caracterizacao_beneficiario` | Público-alvo e quantidade de beneficiários |
+| 4 | Equipe | `equipe` | Membros do projeto. Badge numérico com contagem de membros |
+| 5 | Metas/Atividades | `metas` | Metas e atividades do projeto |
+| 6 | Anexos | `anexos` | Arquivos anexados ao projeto |
+
+**Abas condicionais** (podem não aparecer):
+
+| Nome | Parâmetro `?tab=` | Condição |
+|---|---|---|
+| Plano de Aplicação | `plano_de_aplicacao` | Edital com valor financiado > 0 |
+| Plano de Desembolso | `plano_de_desembolso` | Edital com valor financiado > 0 |
+| Fotos | `fotos` | Projeto em execução ou concluído |
+| Registros de Frequência/Atividade Diária | `registros_de_frequencia_atividade_diaria` | Projeto em execução |
+| Pendências | `pendencias` | Projeto com pendências |
+| Conclusão | `conclusao` | Projeto em fase de conclusão |
 
 ### Aba: Dados do Projeto
 
-Seção **Discriminação do Projeto** — campos de texto longo:
+Duas seções colapsáveis:
 
+**Seção "Dados do Projeto":**
+
+| Campo | Descrição |
+|---|---|
+| Início da Execução | Data de início |
+| Término da Execução | Data de término |
+| Eixo Temático | Eixo(s) selecionado(s) |
+| Interdisciplinar? | Badge Sim/Não |
+| Possui relação institucional com Pesquisa/Extensão? | Badge Sim/Não |
+| Há parceiros externos? | Badge Sim/Não |
+| Pré-seleção | Status (ex: "Aguardando finalização da inscrição.") + Data da Pré-seleção |
+| Seleção | Status (ex: "Em Espera") + Data da Seleção |
+| Pontuação | Status (ex: "Não se aplica") |
+| Data da Divulgação | Data de divulgação do resultado |
+
+Botão: **Editar Projeto** — abre formulário de edição dos dados.
+
+**Seção "Discriminação do Projeto"** — campos de texto longo (somente leitura na visualização):
+
+- Resumo
+- Introdução
 - Justificativa
 - Objetivo Geral
-- Objetivos Específicos
-- Metodologia
-- Metodologia do Projeto (Estrutura, Recursos Humanos, Plano de Trabalho)
-- Acompanhamento e avaliação das atividades
-- Disseminação de Resultados
+- Metodologia da Execução do Projeto
+- Acompanhamento e Avaliação do Projeto Durante a Execução
+- Resultados Esperados e Disseminação dos Resultados
 - Referências
+
+### Aba: Dados do Edital
+
+Informações somente leitura do edital vinculado:
+
+| Campo | Descrição |
+|---|---|
+| Título do edital | Nome do edital |
+| Período de Inscrição | Datas de início e fim (destaque amarelo se período atual) |
+| Período de Pré-seleção | Datas de início e fim |
+| Período de Seleção | Datas de início e fim |
+| Divulgação do Resultado | Data |
+| Anexos | Arquivos do edital ou "Aguardando submissão de arquivos." |
+
+### Aba: Caracterização dos Beneficiários
+
+Botão: **Adicionar Caracterização dos Beneficiários**
+
+Modal "Adicionar Caracterização do Beneficiário":
+
+| Campo | Label | Tipo | Obrigatório | Descrição |
+|---|---|---|---|---|
+| tipo_beneficiario | Tipo de beneficiário | autocomplete | sim | Ver opções abaixo |
+| quantidade | Quantidade Prevista de Pessoas a Atender | número | sim | — |
+
+**Tipo de beneficiário — opções:**
+
+| Valor |
+|---|
+| Público Interno do Instituto |
+| Instituições Governamentais Federais |
+| Instituições Governamentais Estaduais |
+| Instituições Governamentais Municipais |
+| Organizações de Iniciativa Privada |
+| Movimentos Sociais |
+| Organizações Não-governamentais |
+| Organizações Sindicais |
+| Grupos Comunitários |
+| Público externo |
+
+> Pode-se adicionar múltiplas caracterizações (ex: "Público Interno do Instituto" + "Público externo").
 
 ### Aba: Equipe
 
+Badge numérico no título da aba mostra a quantidade de membros.
+
+**Botões:** Adicionar Aluno, Adicionar Servidor, Adicionar Colaborador Externo
+
+**Tabela de membros:**
+
 | Coluna | Descrição |
 |---|---|
-| Ações | Botões de ação |
-| Membro | Nome, matrícula, Termo de Compromisso |
-| Situação | Ativo/Inativo |
-| Categoria/Titulação | DOCENTE, DISCENTE |
-| Bolsista | Sim/Não |
-| Coordenador | Sim/Não |
+| Ações | Visualizar (ícone olho), Editar (ícone lápis) |
+| Membro | Nome e matrícula (ex: "Gustavo Matheus Rahal (2157473)") |
+| Situação | Ativo (verde) / Inativo |
+| Categoria/Titulação | Ex: "TÉCNICO-ADMINISTRATIVO (MESTRADO)", "DOCENTE (DOUTORADO)", "DISCENTE" |
+| Bolsista | Sim/Não (badges coloridos) |
+| Coordenador | Sim/Não (badges coloridos) |
+| Carga Horária | Ex: "4 h" |
+| Opções | Substituir Coordenador, Gerenciar Anexos, Plano de Trabalho, Dados bancários |
 
-### Aba: Conclusão
+**Modal "Adicionar Aluno":**
+
+| Campo | Label | Tipo | Obrigatório | Padrão | Descrição |
+|---|---|---|---|---|---|
+| bolsista | Bolsista | seleção (Sim/Não) | sim | Sim | Se o aluno recebe bolsa |
+| carga_horaria | Carga Horária | número | sim | — | Carga horária semanal |
+| indicar_posteriormente | Indicar o Aluno Posteriormente | checkbox | não | desmarcado | **Condicional:** só aparece se o edital tem "Permite Cadastrar Aluno sem Identificá-lo" marcado. Ao marcar, oculta os campos Participante e Data de Entrada |
+| participante | Participante | autocomplete | condicional | — | Busca por nome ou matrícula do aluno. Oculto se "Indicar o Aluno Posteriormente" marcado |
+| data_entrada | Data de Entrada | data | condicional | — | "A data não pode ser maior do que hoje." Oculto se "Indicar o Aluno Posteriormente" marcado |
+
+> **Comportamento condicional:** Quando o edital tem "Permite Cadastrar Aluno sem Identificá-lo" habilitado, Participante e Data de Entrada deixam de ser obrigatórios. Se o checkbox "Indicar o Aluno Posteriormente" for marcado, esses campos são completamente ocultados — útil para reservar vagas de alunos antes de definir quem serão.
+
+**Modal "Adicionar Participante" (Servidor):**
+
+Mesmos campos do Aluno, com diferença no help text:
+- Carga Horária: "Caso o participante seja docente, informe a carga horária semanal em horas/aula"
+
+**Modal "Adicionar Participante" (Colaborador Externo):**
+
+Mesmos campos do Aluno, com diferença no help text:
+- Participante: "O Colaborador precisa ser cadastrado previamente pelo Diretor Acadêmico ou pela Comissão de Acompanhamento."
+
+### Aba: Metas/Atividades
+
+Botão: **Adicionar Meta**
+
+Modal "Adicionar Meta":
+
+| Campo | Label | Tipo | Obrigatório | Descrição |
+|---|---|---|---|---|
+| ordem | Ordem | número | sim | Número inteiro ≥ 1 |
+| descricao | Descrição | textarea | sim | Descrição da meta. Contador de caracteres visível |
+
+> Após adicionar uma meta, é possível adicionar **atividades** vinculadas a ela (com responsável, data início/fim e indicadores).
+
+### Aba: Anexos
+
+Duas seções:
+
+- **Anexos da Equipe:** Arquivos exigidos pelo edital (via aba "Anexos dos Projetos" do edital). Se o edital não exige anexos, exibe "Nenhum anexo vinculado à equipe foi exigido pelo edital."
+- **Outros Anexos:** Arquivos livres do projeto. Botão "Adicionar Anexo". Se vazio: "O projeto não possui anexos adicionais."
+
+### Aba: Conclusão (condicional)
 
 Campos:
 
@@ -430,17 +560,10 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 | # | Ação | Destino / Seletor | Descrição |
 |---|---|---|---|
 | 1 | navegar | `/projetos_ensino/projeto/{id}/?tab=equipe` | Acessar aba "Equipe" do projeto |
-| 2 | clicar | `a[href*='adicionar'], .btn-success` | Clicar para adicionar novo membro |
-| 3 | preencher_formulario | *(ver campos abaixo)* | Dados do membro da equipe |
-| 4 | clicar | `input[type='submit']` | Salvar membro |
-
-**Campos do formulário de membro:**
-
-| Campo | Seletor | Tipo | Obrigatório | Descrição |
-|---|---|---|---|---|
-| tipo_membro | `#id_tipo` | seleção | sim | Tipo: aluno, servidor ou colaborador externo |
-| membro | `#id_membro` | texto | sim | Nome ou matrícula do membro |
-| carga_horaria | `#id_ch` | numero | sim | Carga horária semanal do membro |
+| 2 | clicar | `Adicionar Aluno` / `Adicionar Servidor` / `Adicionar Colaborador Externo` | Escolher o tipo de membro a adicionar. Cada botão abre um modal com os mesmos campos |
+| 3 | preencher_formulario | *(ver seção Aba: Equipe — modais)* | Preencher Bolsista, Carga Horária, Participante e Data de Entrada |
+| 4 | clicar | `Salvar` | Salvar membro na equipe |
+| 5 | repetir | passos 2-4 | Repetir para cada membro adicional |
 
 ---
 
@@ -458,5 +581,45 @@ Formulário para submissão de novo projeto de ensino vinculado a um edital. Cam
 | # | Ação | Destino / Seletor | Descrição |
 |---|---|---|---|
 | 1 | navegar | `/projetos_ensino/projeto/{id}/` | Acessar a página do projeto |
-| 2 | clicar | `a:has-text('Enviar para Pré-Avaliação'), button:has-text('Enviar')` | Clicar em "Enviar para Pré-Avaliação" |
+| 2 | clicar | `Enviar Projeto` | Clicar no botão verde "Enviar Projeto" no topo da página |
 | 3 | verificar | `.alert-success, .success` | Verificar mensagem de confirmação de envio |
+
+---
+
+### 10. adicionar_caracterizacao_beneficiarios
+
+**Descrição:** Cadastrar público-alvo e quantidade de beneficiários do projeto
+
+**Pré-condições:**
+- Projeto já criado e salvo
+- **Permissão:** Coordenador de Projetos de Ensino (ser coordenador do projeto)
+
+**Passos:**
+
+| # | Ação | Destino / Seletor | Descrição |
+|---|---|---|---|
+| 1 | navegar | `/projetos_ensino/projeto/{id}/?tab=caracterizacao_beneficiario` | Acessar aba "Caracterização dos Beneficiários" |
+| 2 | clicar | `Adicionar Caracterização dos Beneficiários` | Abrir modal de cadastro |
+| 3 | preencher_formulario | *(ver seção Aba: Caracterização dos Beneficiários)* | Selecionar tipo de beneficiário e quantidade |
+| 4 | clicar | `Salvar` | Salvar caracterização |
+| 5 | repetir | passos 2-4 | Repetir para cada tipo de beneficiário |
+
+---
+
+### 11. adicionar_meta
+
+**Descrição:** Cadastrar metas do projeto
+
+**Pré-condições:**
+- Projeto já criado e salvo
+- **Permissão:** Coordenador de Projetos de Ensino (ser coordenador do projeto)
+
+**Passos:**
+
+| # | Ação | Destino / Seletor | Descrição |
+|---|---|---|---|
+| 1 | navegar | `/projetos_ensino/projeto/{id}/?tab=metas` | Acessar aba "Metas/Atividades" |
+| 2 | clicar | `Adicionar Meta` | Abrir modal de cadastro |
+| 3 | preencher_formulario | *(ver seção Aba: Metas/Atividades)* | Preencher ordem e descrição da meta |
+| 4 | clicar | `Salvar` | Salvar meta |
+| 5 | repetir | passos 2-4 | Repetir para cada meta adicional |
